@@ -2,7 +2,13 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "dify-ce-dd",
   "main": "src/index.ts",
-  "compatibility_date": "2025-03-31"
+  "compatibility_date": "2025-03-31",
+  "routes": [
+    {
+      "custom_domain": true,
+      "pattern": "dify-ce-dd.modyqyw.top"
+    },
+  ]
   // "compatibility_flags": [
   //   "nodejs_compat"
   // ],
