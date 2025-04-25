@@ -3,9 +3,17 @@ import { Hono } from "hono";
 const app = new Hono();
 
 app.get("/", (c) => {
-  return c.text(
-    "🎉 HonoJS: Hello World! Get /ce?value=xxx or /dd?value=xxx to get the final value."
-  );
+  return c.json({
+    HonoJS: "👋 Hello World!",
+    description: {
+      ce: "compress and encode",
+      dd: "decode and decompress",
+    },
+    request: {
+      ce: "GET /ce?value=xxx",
+      dd: "GET /dd?value=xxx",
+    },
+  });
 });
 
 app.get("/ce", async (c) => {
