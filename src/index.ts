@@ -22,7 +22,7 @@ app.get("/ce", async (c) => {
     return c.json({ error: "value is required." }, 400);
   }
   try {
-    const uint8Array = new TextEncoder().encode(value);
+    const uint8Array = new TextEncoder().encode(decodeURIComponent(value));
     const compressedStream = new Response(
       new Blob([uint8Array]).stream().pipeThrough(new CompressionStream("gzip"))
     ).arrayBuffer();
@@ -41,7 +41,7 @@ app.get("/dd", async (c) => {
     return c.json({ error: "value is required." }, 400);
   }
   try {
-    const binaryString = atob(value);
+    const binaryString = atob(decodeURIComponent(value));
     const compressedUint8Array = Uint8Array.from(binaryString, (char) =>
       char.charCodeAt(0)
     );
